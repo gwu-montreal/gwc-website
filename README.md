@@ -13,8 +13,8 @@ In the src directory...
 Feel free to add as many files as needed, as long as they're imported.
 Importing is useful because you can split the code into several files to keep it organized.
 
-To import CSS, add `@import <your css file name without the extension>;` at the top of `init.css`.
-To import JS, add `import <your js file name without the extension>;` at the top of `init.js`.
+To import CSS, add `@import '<your css file name without the extension>';` at the top of `init.css`.
+To import JS, add `import '<your js file name without the extension>';` at the top of `init.js`.
 
 > CSS is processed with PostCSS, using _each_ and _nested_ features.
 > JS is processed with esbuild.
