@@ -1,0 +1,19 @@
+@each $weight, $w in (Regular, Bold), (400, 700) {
+
+  @font-face {
+    font-family: 'Source Sans';
+    font-style: normal;
+    font-weight: $(w);
+    font-display: block;
+    src: url("/assets/fonts/SourceSans/SourceSans3-$(weight).woff2") format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Source Sans';
+    font-style: italic;
+    font-weight: $(w);
+    font-display: block;
+    src: url("/assets/fonts/SourceSans/SourceSans3-$(weight)Italic.otf.woff2") format('woff2');
+  }
+
+}

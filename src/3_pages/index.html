@@ -1,0 +1,14 @@
+---
+layout: default
+permalink: index.html
+path: home
+eleventyComputed:
+  title: '{{ siteinfo.title }}'
+  description: '{{ siteinfo.description }}'
+---
+
+<header id="hero">
+  <h1>{{ title }}</h1>
+</header>
+
+<main>{% renderFile "./src/4_content/mainpage.md" %}</main>
