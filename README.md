@@ -23,7 +23,7 @@ To import JS, add `import <your js file name without the extension>;` at the top
 
 Simply create a new html or markdown file in `3_pages`, adding the relevant _front matter_.
 
-#### Wait what's "front matter"?
+### Wait what's "front matter"?
 
 At the top of every page file, there's information about that page. It's used when generating the website. Front matter data looks like this:
 
@@ -52,13 +52,13 @@ Use this little snippet in the page's html: `{% renderFile "./src/4_content/<you
 
 ## How to test and build locally:
 
-#### If you have no idea what 'pnpm' refers to...
+### If you have no idea what 'pnpm' refers to...
 
 Basically all modern web stuff uses something called a 'package manager' to help with development. It makes it possible to download a project like this one, and with just one little command, it'll download all the additional necessary files for it to work. The most common package managers are npm, Yarn and pnpm; we'll use this last one.
 
 To be able to use pnpm, you'll need Node which you can download [here](https://nodejs.org/en/download/). Once you have that installed, open a terminal or command prompt, and type `npm install -g pnpm`. You're goog to go! (Now that you have pnpm istalled, every time you see a project documentation saying you need to do something with `npm` or `yarn`, you should be able to do it with `pnpm`.)
 
-#### Once you have pnpm installed
+### Once you have pnpm installed
 
 Download the whole project to your computer, either manually or with Git. Open a terminal or command prompt in the project directory. (The location of the directory should appear in your terminal, something like `C:/Users/.../gwc-website >`)
 
