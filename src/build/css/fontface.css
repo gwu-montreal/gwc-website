@@ -1,0 +1,28 @@
+@each $n, $name in (SourceSans3, SourceSerif4, SourceCodePro), (SourceSans, SourceSerif, SourceCodePro) {
+
+  @each $w, $weight in (ExtraLight, Light, Regular, Semibold, Bold, Black), (200, 300, 400, 600, 700, 900) {
+
+    @font-face {
+      font-family: $(name);
+      font-style: normal;
+      font-weight: $(weight);
+      font-display: block;
+      src: url("/assets/fonts/$(name)/$(n)-$(w).otf.woff2") format('woff2');
+    }
+
+    @font-face {
+      font-family: $(name);
+      font-style: italic;
+      font-weight: $(weight);
+      font-display: block;
+      @if $(w) == Regular {
+        src: url("/assets/fonts/$(name)/$(n)-It.otf.woff2") format('woff2');
+      }
+      @else {
+        src: url("/assets/fonts/$(name)/$(n)-$(w)It.otf.woff2") format('woff2');
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,42 @@
+---
+permalink: admin/index.html
+bodyid: admin
+eleventyComputed:
+  title: "{{ siteinfo.title }} — Content Manager"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body id="admin">
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script>
+      CMS.registerPreviewStyle("/admin/style.css");
+
+      const PostPreview = createClass({
+        render: function() {
+          const entry = this.props.entry;
+          return h('div', {'id': 'post', 'className': 'container'},
+            h('article', {},
+              h('h1', {}, entry.getIn(['data', 'title'])),
+              h('div', {'className': 'post-info'},
+                h('small', {}, `Published on ${entry.getIn(['data', 'date'])}`),
+              ),
+              h('div', {'className': 'post-content text-font'}, this.props.widgetFor('body'))
+            )
+          );
+        }
+      });
+
+      CMS.registerPreviewTemplate('posts', PostPreview);
+    </script>
+  </body>
+
+</html>

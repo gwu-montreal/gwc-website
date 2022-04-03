@@ -1,0 +1,45 @@
+---
+layout: default
+permalink: index.html
+bodyid: index
+path: home
+eleventyComputed:
+  title: "{{ siteinfo.title }}"
+  description: "{{ siteinfo.description }}"
+---
+
+<header id="hero">
+  <h1>{{ title }}</h1>
+</header>
+
+<main>
+
+  <p>(content)</p>
+
+  {% for post in collections.post | reverse %}
+  <article>
+
+    <h2>
+      <a href="{{ post.url | url }}">
+        {% if post.data.title %}
+          {{ post.data.title }}
+        {% else %}
+          Untitled
+        {% endif %}
+      </a>
+    </h2>
+
+    {% if post.data.description %}
+      <p class="post-description">
+        {{ post.data.description }}
+      </p>
+    {% endif %}
+
+    <div class="post-info">
+      <small>{% heroicon "outline", "calendar" %} <time>{{ post.date | readableDate }}</time></small>
+    </div>
+
+  </article>
+  {% endfor %}
+
+</main>
