@@ -60,9 +60,9 @@ To be able to use pnpm, you'll need Node which you can download [here](https://n
 
 ### Once you have pnpm installed
 
-Download the whole project to your computer, either manually or with Git. Open a terminal or command prompt in the project directory. (The location of the directory should appear in your terminal, something like `C:/Users/.../gwc-website >`)
+Download the whole project to your computer, either manually or with Git. Open a terminal or command prompt in the project directory. (The location of the directory should appear in your terminal, something like `C:/Users/.../gwc-website >`.) Then run `pnpm install` (= just type that and press enter) – this downloads all the project dependencies. You only need to do this once.
 
-Run `pnpm serve` (just type that and press enter). This will create a preview website that you can check out at http://localhost:8080 (by default). The page should automatically reload whenever you make changes, so you can experiment with CSS for example.
+To preview the website, run `pnpm serve`. This will create a local website that you can check out at http://localhost:8080 (by default). The page should automatically reload whenever you make changes, so you can experiment with CSS for example.
 
 To build, run `pnpm build`. This will output all the files needed for the website to the `_site` directory, and they can then be uploaded to a host.
 
