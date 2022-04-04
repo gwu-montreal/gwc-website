@@ -55,8 +55,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: 'src',
-      includes: '2_consumes/includes',
-      layouts: '2_consumes/layouts',
+      includes: '2_consumes/layouts',
       data: '2_consumes/data',
     },
     htmlTemplateEngine: 'njk',

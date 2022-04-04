@@ -44,6 +44,8 @@ eleventyComputed:
 
 With this example, you can see how the stuff in the `2_consumes` folder is "consumed" by the page files to create the pages in the final website.
 
+> What's the difference between the `2_consumes` and `4_content` direcctories? It's mostly a matter of organisation; consumes is more about overall data, content is more about indidividual snippets that can be reused. On the technical side, the `2_consumes` stuff is all "read" when generating the website, while the `4_content` folder is ignored completely and needs to be manually referenced.
+
 > For more info on how all this works, check out the [Eleventy documentation](https://www.11ty.dev/docs/). (You don't need to understand any of that though.)
 
 ## How to render things from the 4_contents folder in a page:

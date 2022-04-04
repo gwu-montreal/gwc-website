@@ -1,11 +1,26 @@
+@import 'reset';
 @import 'fontface';
+@import 'typography';
+@import 'base';
 
-html {
-  font-family: 'Source Sans';
-}
+/* Each of these files is for a specific page */
+@import 'index';
 
-#container {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
+/* Define CSS variables */
+:root {
+  /* Dimensions */
+  --default-gap: 3rem;
+  --container-width: 700px;
+  /* BG colors */
+  --site-bg: #eee;
+  --header-bg: #101010;
+  --container-bg: #fff;
+  --footer-bg: #e7382d;
+  /* Text colors */
+  --container-text: #151515;
+  --container-link-bg: #eee;
+  --container-link-hover: #e7382d;
+  --footer-text: #eee;
+  --footer-link-bg: #e65147;
+  --footer-link-hover: #fcbb42;
 }

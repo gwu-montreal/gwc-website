@@ -1,0 +1,34 @@
+html {
+  background-color: var(--site-bg);
+}
+
+/* #container is the rectangle that contains everything but the background */
+#container {
+  min-height: calc(100vh - var(--default-gap) * 2);
+  width: 90%;
+  max-width: var(--container-width);
+  margin: var(--default-gap) auto;
+  border-radius: var(--default-gap);
+  background-color: var(--container-bg);
+  overflow: hidden;
+
+  & > * {
+    width: 100%;
+    padding: var(--default-gap);
+  }
+}
+
+#header {
+  background-color: var(--header-bg);
+  text-align: center;
+}
+
+#content {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--default-gap);
+}
+
+#footer {
+  background-color: var(--footer-bg);
+}

@@ -1,0 +1,17 @@
+#orgs-list {
+  margin: 0 auto;
+  font-size: 1.25rem;
+
+  .region-name {
+    margin-bottom: 0.2rem;
+  }
+
+  .region-list {
+    margin-bottom: 1.4rem;
+
+    .org-location {
+      font-size: 0.85em;
+      font-style: italic;
+    }
+  }
+}
