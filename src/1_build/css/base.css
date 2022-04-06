@@ -31,4 +31,5 @@ html {
 
 #footer {
   background-color: var(--footer-bg);
+  padding: var(--footer-gap)
 }

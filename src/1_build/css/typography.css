@@ -35,7 +35,7 @@ a {
 
   & a {
     color: var(--footer-text);
-    background-color: var(--footer-link-bg);
+    background-color: var(--footer-bg);
 
     &:hover, &:focus {
       color: var(--footer-bg);

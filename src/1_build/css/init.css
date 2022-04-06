@@ -11,6 +11,7 @@
   /* Dimensions */
   --default-gap: 3rem;
   --container-width: 700px;
+  --footer-gap: 1.5rem;
   /* BG colors */
   --site-bg: #eee;
   --header-bg: #101010;
@@ -21,6 +22,5 @@
   --container-link-bg: #eee;
   --container-link-hover: #e7382d;
   --footer-text: #eee;
-  --footer-link-bg: #e65147;
   --footer-link-hover: #fcbb42;
 }
