@@ -16,4 +16,12 @@
     src: url("/assets/fonts/SourceSans/SourceSans3-$(weight)Italic.otf.woff2") format('woff2');
   }
 
+  @font-face {
+    font-family: 'Synonym';
+    font-style: normal;
+    font-weight: $(w);
+    font-display: block;
+    src: url("/assets/fonts/Synonym/Synonym-$(weight).woff2") format('woff2');
+  }
+
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% metagen title=title+' | '+siteinfo.title if title else siteinfo.title,
+    desc=description, name=author or siteinfo.author,
+    url='https://'+siteinfo.url+page.url %}
+
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <script defer src="/script.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        
+      </div>
+
+      {{ content | safe }}
+    </div>
+  </body>
+</html>
