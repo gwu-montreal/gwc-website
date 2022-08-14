@@ -15,7 +15,14 @@ html {
 }
 
 /* #container is the rectangle that contains everything but the background */
+
+#container, #content {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 #container {
+  align-content: stretch;
   min-height: calc(100vh - var(--default-gap) * 2);
   width: 90%;
   max-width: var(--container-width);
@@ -42,8 +49,7 @@ html {
 }
 
 #content {
-  display: flex;
-  flex-flow: column nowrap;
+  flex-grow: 1;
   gap: var(--default-gap);
 }
 

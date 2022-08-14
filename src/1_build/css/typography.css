@@ -10,6 +10,7 @@
 body {
   font-size: 18px;
   font-family: Synonym, courier, monospace;
+  font-weight: 415;
   line-height: 1.6;
 }
 
@@ -19,7 +20,10 @@ h2 {
 }
 
 a {
-  padding: 0.1em 0.5em;
+  position: relative;
+  bottom: -0.06em;
+  padding: 0.025em 0.3em 0.06em;
+  font-weight: 445;
 }
 
 #container {
