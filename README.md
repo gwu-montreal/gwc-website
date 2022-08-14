@@ -4,7 +4,7 @@ In the src directory...
 
 - **0_assets**: images, fonts, etc. that will be simply used as-is in the final website;
 - **1_build**: html layouts, css and js files that will be processed to generate the html pages, `style.css` and `script.js` respectively;
-- **2_pages**: each file in here (including markdown) is converted into a page in the final website, using the data and layouts mentioned above;
+- **2_pages**: each file in here (including markdown) is converted into a page in the final website, using the layouts mentioned above;
 - **3_content**: this is for content that can be referenced or rendered in the pages, but shouldn't generate individual pages (for instance, markdown excerpts).
 
 ## How to edit the CSS and JS:

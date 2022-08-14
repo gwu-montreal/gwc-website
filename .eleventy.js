@@ -45,7 +45,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
 
   // Copy assets to /_site
-  eleventyConfig.addPassthroughCopy({ 'src/0_assets': 'assets/' });
+  eleventyConfig.addPassthroughCopy({
+    'src/0_assets': 'assets/',
+    'netlify-cms': 'admin/',
+  });
 
   // Add CSS & JS output to watch target
   eleventyConfig.addWatchTarget('./src/1_build/');
