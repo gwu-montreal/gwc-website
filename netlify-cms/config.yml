@@ -1,68 +1,74 @@
 backend:
-  # Use netlify identity as backend
   name: git-gateway
-  branch: master
-  ### enable below lines for github integration ###
-  # name: github
-  # repo: surjithctly/neat-starter
-media_folder: "src/static/img"
-public_folder: "/static/img"
+  branch: main
+  squash_merges: true
 
-# Please run "npx netlify-cms-proxy-server" for local backend
-local_backend: true
-# publish_mode: editorial_workflow
+publish_mode: editorial_workflow
+show_preview_links: true
+
+media_folder: 'src/_assets/img'
+public_folder: '/assets/img'
+
+site_url: 'https://gameworkerscoalition.org'
+
 collections:
-  - label: "Blog"
-    name: "blog"
-    folder: "src/posts"
-    create: true
-    editor:
-      preview: false
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - widget: select
-        label: "tags"
-        name: "tags"
-        multiple: true
-        create: true
-        options: ["Tags", "created", "from", "config.yml"]
-  - label: "Settings"
-    name: "settings"
-    editor:
-      preview: false
+  - label: 'Global Data'
+    name: data
+    delete: false
     files:
-      - label: "Navigation"
-        name: "items"
-        file: "src/_data/navigation.yaml"
+      - label: 'Site Info'
+        name: siteinfo
+        file: 'src/_data/siteinfo.yaml'
         fields:
-          - label: Nav Items
-            name: items
+          - { label: 'Title', name: title, widget: string }
+          - { label: 'Url', name: url, widget: string }
+      - label: 'Organizations'
+        name: orgs
+        file: 'src/_data/orgs.yaml'
+        fields:
+          - label: 'Regions'
+            name: regions
             widget: list
-            allow_add: false
-            collapsed: false
             fields:
-              - { label: Title, name: text, widget: string }
-              - { label: URL, name: url, widget: string }
-      - label: "Quick Links"
-        name: "links"
-        file: "src/_data/quicklinks.yaml"
+              - label: 'Region tag'
+                name: regiontag
+                widget: select
+                options: ['africa', 'asia', 'na', 'sa', 'europe', 'oceania']
+              - label: 'Region orgs'
+                name: regionorgs
+                widget: list
+                fields:
+                  - { label: 'Organization name', name: name, widget: string }
+                  - {
+                      label: 'Location',
+                      name: location,
+                      widget: string,
+                      required: false,
+                    }
+                  - { label: 'Link', name: link, widget: string }
+
+  - label: 'Language Data'
+    name: lang
+    delete: false
+    files:
+      - label: 'English'
+        name: data-en
+        file: 'src/en/en.yaml'
         fields:
-          - label: Nav Items
-            name: links
+          - { label: 'lang', name: langtag, widget: hidden, default: 'en' }
+          - { label: 'Site Description', name: sitedesc, widget: string }
+          - label: 'i18n'
+            name: i18n
             widget: list
-            collapsed: false
             fields:
-              - { label: Title, name: title, widget: string }
-              - { label: URL, name: url, widget: string }
-              - { label: Description, name: desc, widget: string }
-      - label: "Meta Settings"
-        name: "settings"
-        file: "src/_data/settings.yaml"
-        fields:
-          - { label: Name, name: name, widget: string }
-          - { label: Author, name: author, widget: string }
-          - { label: URL, name: url, widget: string }
+              - { label: 'Key', name: i18nkey, widget: string }
+              - { label: 'Translation', name: i18nt, widget: string }
+
+  - label: 'Content: English'
+    name: content-en
+    folder: 'src/en/content'
+    identifier_field: name
+    create: true
+    fields:
+      - { label: 'Name', name: name, widget: string }
+      - { label: 'Content', name: content, widget: markdown }

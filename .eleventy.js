@@ -41,25 +41,31 @@ module.exports = function (eleventyConfig) {
   // Merge data instead of overriding
   eleventyConfig.setDataDeepMerge(true);
 
-  // Read yaml files from _data folder
+  // Read yaml data files
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
+
+  // Add i18n shortcode
+  eleventyConfig.addShortcode('i18n', function (str) {
+    const t = (this.ctx.i18n.find(e => e.key === str) || {}).t;
+    return t || `<span class="untranslated">${str}</span>`;
+  });
 
   // Copy assets to /_site
   eleventyConfig.addPassthroughCopy({
-    'src/0_assets': 'assets/',
+    'src/_assets': 'assets/',
     'netlify-cms': 'admin/',
   });
 
   // Add CSS & JS output to watch target
-  eleventyConfig.addWatchTarget('./src/1_build/');
+  eleventyConfig.addWatchTarget('./src/_build/');
 
   // Let Eleventy transform HTML files as nunjucks
   // So that we can use .html instead of .njk
   return {
     dir: {
       input: 'src',
-      includes: '1_build/layouts',
-      data: '3_content/data',
+      includes: '_build/layouts',
+      data: '_data',
     },
     htmlTemplateEngine: 'njk',
   };

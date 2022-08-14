@@ -2,10 +2,15 @@
 
 In the src directory...
 
-- **0_assets**: images, fonts, etc. that will be simply used as-is in the final website;
-- **1_build**: html layouts, css and js files that will be processed to generate the html pages, `style.css` and `script.js` respectively;
-- **2_pages**: each file in here (including markdown) is converted into a page in the final website, using the layouts mentioned above;
-- **3_content**: this is for content that can be referenced or rendered in the pages, but shouldn't generate individual pages (for instance, markdown excerpts).
+- **\_assets**: images, fonts, etc. that will be simply used as-is in the final website;
+- **\_build**: html layouts, css and js files that will be processed to generate the html pages, `style.css` and `script.js` respectively;
+- **\_data**: _language-agnostic_ data files that can be referenced in the whole site.
+
+**In the language folders** (e.g. `src/en/`):
+
+- One **data file** named like the language (e.g. `src/en/en.yaml`) contains _localized_ data to be referenced in those pages (see below on how to output localized string);
+- One **content folder** (e.g. `src/en/content/`) contains snippets that can be rendered in pages, but don't generate pages themselves;
+- All the remaining html and markdown files are converted into individual pages in the final website.
 
 ## How to edit the CSS and JS:
 
@@ -20,7 +25,7 @@ To import JS, add `import '<your js file name without the extension>';` at the t
 
 ## How to add pages:
 
-Simply create a new html or markdown file in `2_pages`, adding the relevant _front matter_.
+Simply create a new html or markdown file in the corresponding **language folder**, adding the relevant _front matter_.
 
 ### Wait what's "front matter"?
 
@@ -29,27 +34,31 @@ At the top of every page file, there's information about that page. It's used wh
 ```
 ---
 layout: default
-permalink: index.html
-eleventyComputed:
-  title: '{{ siteinfo.title }} - Home'
-  description: '{{ siteinfo.description }}'
+title: 'Home'
+description: 'The GWC's home page'
 ---
 ```
 
-- **_layout_** indicates which layout from the `1_build/layouts` folder to use as a "html wrapper".
-- **_permalink_** is used to determine the url where the page should exist – for instance, "index.html" creates a page at "domain.com/index.html".
-- **_title_** and **_description_** are pretty self-explanatory... in the example above though, they used _computed_ data, that's why they're written under `eleventyComputed`.
-  - `{{ siteinfo.title }}` means we want to use the `title` value from the `siteinfo` file that's in the `3_content/data` folder.
+- **_layout_** indicates which layout from the `_build/layouts` folder to use as a "html wrapper". You can generally use `default`.
+- **_title_** and **_description_** are pretty self-explanatory, they're optional.
 
-With this example, you can see how the stuff in the `3_content/data` folder is "used" by the page files to create the pages in the final website.
+There can also be extra elements in the front matter that can then be referenced in the page's html.
 
 > For more info on how all this works, check out the [Eleventy documentation](https://www.11ty.dev/docs/). (You don't need to understand any of that though.)
 
-## How to render things from the 3_content folder in a page:
+## How to output localized strings from the language data file?
 
-Everything in `3_content/data` is automatically "read" when generating the website (so that data can be referenced directly from any page without any extra step needed), but the files directly under `3_content` or other subfolders need to be linked manually.
+Using this snippet: `{% i18n <some key> %}` in a page automatically outputs the corresponding string if it's listed under `i18n` in the data file.
 
-You can use this little snippet in the page's html: `{% renderFile "./src/3_content/<your file>" %}`. For instance, you can write `{% renderFile "./src/3_content/example.md" %}` in a page to render the markdown from `example.md`.
+For instance, if you had `i18n: - { key: 'hi', t: 'Salut' }` in `fr.yaml` in the fr folder, then any page in that same folder could use `{% i18n hi %}` and it would output 'Salut' in the final website.
+
+If the translation doesn't exist, then the key is output as-is ('hi' in the example above) but wrapped in a `<span>` tag with the 'untranslated' class.
+
+## How to render things from the content folder in a page:
+
+Everything in **data files** is automatically "read" when generating the website (so that data can be referenced directly from any page without any extra step needed), but the files in the **content folder** need to be linked manually.
+
+You can use this little snippet in a page's html: `{% renderFile "./src/<language>/content/<your file>" %}`. For instance, you can write `{% renderFile "./src/en/content/example.md" %}` in a page to render the markdown from `example.md`.
 
 ## How to test and build locally:
 

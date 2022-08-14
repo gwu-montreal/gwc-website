@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {% metagen title=title+' | '+siteinfo.title if title else siteinfo.title,
-    desc=description, name=author or siteinfo.author,
+    desc=description if description else sitedescription,
     url='https://'+siteinfo.url+page.url %}
 
     <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
@@ -14,21 +14,34 @@
     <link rel="stylesheet" href="/style.css" />
 
     <script defer src="/script.js"></script>
+    <script
+      defer
+      src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+    ></script>
   </head>
   <body>
     <div id="container">
       <div id="header">
         {% if not hideLogo %}
-        <img src="assets/img/logo.png" alt="Game Workers Coalition" />
+        <img src="/assets/img/logo.png" alt="Game Workers Coalition" />
         {% endif %}
       </div>
 
-      <main id="content">
-        {{ content | safe }}
-      </main>
+      <main id="content">{{ content | safe }}</main>
 
-      <div id="footer">
-      </div>
+      <div id="footer"></div>
     </div>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', user => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>

@@ -1,20 +1,22 @@
 ---
 layout: default
-permalink: GWUarchive/
+title: 'GWU Archive'
 hideLogo: true
 ---
 
 <main id="content">
   <div id="description" class="text-block">
-    {% renderFile "./src/3_content/GWUarchiveDescription.md" %}
+    {% renderFile "./src/en/content/GWUarchiveDescription.md" %}
   </div>
 
   <div id="orgs-list">
     <ul class="region-list">
-      {% for resource in GWUarchivelinks %}
+      {% for resource in gwuArchiveLinks %}
       <li>
         <a href="{{ resource.link }}">{{ resource.name }}</a>
-        <span class="org-location"> - last updated {{ resource.timestamp }}</span>
+        <span class="org-location">
+          - last updated {{ resource.timestamp }}</span
+        >
       </li>
       {% endfor %}
     </ul>

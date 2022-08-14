@@ -15,7 +15,7 @@ class BuildTemplate {
     };
 
     await esbuild.build({
-      entryPoints: ['src/1_build/js/init.js'],
+      entryPoints: ['src/_build/js/init.js'],
       bundle: true,
       outfile: '_site/script.js',
       ...commonOptions,

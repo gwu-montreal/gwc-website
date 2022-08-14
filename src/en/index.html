@@ -1,20 +1,19 @@
 ---
 layout: default
-permalink: index.html
 ---
 
 <div id="description" class="text-block">
-  {% renderFile "./src/3_content/description.md" %}
+  {% renderFile "./src/en/content/description.md" %}
 </div>
 
 <div id="orgs-list">
   <h2>Member organizations:</h2>
   <ul>
-    {% for region, regionorgs in orgs %}
+    {% for region in orgs %}
     <li>
-      <h3 class="region-name">{{ region }}</h3>
+      <h3 class="region-name">{% i18n region.name %}</h3>
       <ul class="region-list">
-        {% for org in regionorgs %}
+        {% for org in region.orgs %}
         <li>
           <a href="{{ org.link }}">{{ org.name }}</a>
           {% if org.location %}
@@ -30,6 +29,9 @@ permalink: index.html
 
 <div class="text-block">
   <p>
-    If you represent an organization that is interested in joining the network, please reach out to any of the orgs in this list to ask about becoming a GWC member. Members of the GWC have to abide by <a href="/statutes" target="_blank" title="GWC statutes">our statues</a>.
+    If you represent an organization that is interested in joining the network,
+    please reach out to any of the orgs in this list to ask about becoming a GWC
+    member. Members of the GWC have to abide by
+    <a href="/statutes" target="_blank" title="GWC statutes">our statues</a>.
   </p>
 </div>
