@@ -1,3 +1,15 @@
+:root {
+  /* Dimensions */
+  --default-gap: 3rem;
+  --container-width: 700px;
+  --footer-gap: 1.5rem;
+  /* BG colors */
+  --site-bg: #eee;
+  --header-bg: #101010;
+  --container-bg: #fff;
+  --footer-bg: #e7382d;
+}
+
 html {
   background-color: var(--site-bg);
 }

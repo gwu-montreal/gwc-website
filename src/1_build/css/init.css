@@ -1,26 +1,10 @@
+/* Setup */
 @import 'reset';
 @import 'fontface';
+
+/* Site-wide styles */
 @import 'typography';
 @import 'base';
 
 /* Each of these files is for a specific page */
 @import 'index';
-
-/* Define CSS variables */
-:root {
-  /* Dimensions */
-  --default-gap: 3rem;
-  --container-width: 700px;
-  --footer-gap: 1.5rem;
-  /* BG colors */
-  --site-bg: #eee;
-  --header-bg: #101010;
-  --container-bg: #fff;
-  --footer-bg: #e7382d;
-  /* Text colors */
-  --container-text: #151515;
-  --container-link-bg: #eee;
-  --container-link-hover: #e7382d;
-  --footer-text: #eee;
-  --footer-link-hover: #fcbb42;
-}
