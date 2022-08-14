@@ -31,11 +31,11 @@ collections:
             widget: list
             fields:
               - label: 'Region tag'
-                name: regiontag
+                name: name
                 widget: select
                 options: ['africa', 'asia', 'na', 'sa', 'europe', 'oceania']
               - label: 'Region orgs'
-                name: regionorgs
+                name: orgs
                 widget: list
                 fields:
                   - { label: 'Organization name', name: name, widget: string }
@@ -56,13 +56,13 @@ collections:
         file: 'src/en/en.yaml'
         fields:
           - { label: 'lang', name: langtag, widget: hidden, default: 'en' }
-          - { label: 'Site Description', name: sitedesc, widget: string }
-          - label: 'i18n'
+          - { label: 'Site Description', name: sitedescription, widget: string }
+          - label: 'Localized strings'
             name: i18n
             widget: list
             fields:
-              - { label: 'Key', name: i18nkey, widget: string }
-              - { label: 'Translation', name: i18nt, widget: string }
+              - { label: 'Key', name: key, widget: string }
+              - { label: 'Translation', name: t, widget: string }
 
   - label: 'Content: English'
     name: content-en
