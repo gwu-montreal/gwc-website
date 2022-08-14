@@ -14,6 +14,8 @@ site_url: 'https://gameworkerscoalition.org'
 collections:
   - label: 'Global Data'
     name: data
+    editor:
+      preview: false
     delete: false
     files:
       - label: 'Site Info'
@@ -29,6 +31,7 @@ collections:
           - label: 'Regions'
             name: regions
             widget: list
+            summary: '{{fields.name}}: {{fields.orgs}}'
             fields:
               - label: 'Region tag'
                 name: name
@@ -37,6 +40,7 @@ collections:
               - label: 'Region orgs'
                 name: orgs
                 widget: list
+                summary: '{{fields.name}} ({{fields.link}})'
                 fields:
                   - { label: 'Organization name', name: name, widget: string }
                   - {
@@ -49,6 +53,8 @@ collections:
 
   - label: 'Language Data'
     name: lang
+    editor:
+      preview: false
     delete: false
     files:
       - label: 'English'

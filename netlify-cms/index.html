@@ -9,9 +9,36 @@
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
-    <!-- CSS for preview panel -->
+    <div id="container">
+      <div id="header">
+        {% if not hideLogo %}
+        <img src="/assets/img/logo.png" alt="Game Workers Coalition" />
+        {% endif %}
+      </div>
+
+      <main id="content">{{ content | safe }}</main>
+
+      <div id="footer"></div>
+    </div>
+
+    <!-- Preview panel customization -->
     <script>
       CMS.registerPreviewStyle('/style.css');
+
+      const ContentPreview = createClass({
+        render: function () {
+          const entry = this.props.entry;
+          return h(
+            'div',
+            { id: 'container' },
+            h('div', { id: 'header' }, {}),
+            h('main', { id: 'content' }, this.props.widgetFor('body')),
+            h('div', { id: 'footer' }, {})
+          );
+        },
+      });
+
+      CMS.registerPreviewTemplate('content-en', ContentPreview);
     </script>
 
     <!-- Netlify Identity Widget -->
