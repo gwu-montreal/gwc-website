@@ -9,18 +9,6 @@
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
-    <div id="container">
-      <div id="header">
-        {% if not hideLogo %}
-        <img src="/assets/img/logo.png" alt="Game Workers Coalition" />
-        {% endif %}
-      </div>
-
-      <main id="content">{{ content | safe }}</main>
-
-      <div id="footer"></div>
-    </div>
-
     <!-- Preview panel customization -->
     <script>
       CMS.registerPreviewStyle('/style.css');

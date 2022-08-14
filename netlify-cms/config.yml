@@ -31,7 +31,7 @@ collections:
           - label: 'Regions'
             name: regions
             widget: list
-            summary: '{{fields.name}}: {{fields.orgs}}'
+            summary: '{{fields.name}}: {{fields.orgs.length}} orgs'
             fields:
               - label: 'Region tag'
                 name: name
