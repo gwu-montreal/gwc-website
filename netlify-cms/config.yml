@@ -60,6 +60,7 @@ collections:
           - label: 'Localized strings'
             name: i18n
             widget: list
+            summary: '{{fields.key}}: {{fields.t}}'
             fields:
               - { label: 'Key', name: key, widget: string }
               - { label: 'Translation', name: t, widget: string }
@@ -71,4 +72,4 @@ collections:
     create: true
     fields:
       - { label: 'Name', name: name, widget: string }
-      - { label: 'Content', name: content, widget: markdown }
+      - { label: 'Content', name: body, widget: markdown }

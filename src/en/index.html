@@ -9,7 +9,7 @@ layout: default
 <div id="orgs-list">
   <h2>Member organizations:</h2>
   <ul>
-    {% for region in orgs %}
+    {% for region in orgs.regions %}
     <li>
       <h3 class="region-name">{% i18n region.name %}</h3>
       <ul class="region-list">
