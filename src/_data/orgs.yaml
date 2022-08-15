@@ -19,12 +19,12 @@ northam:
     location: Québec, Canada
     link: https://gwumtl.com/
   
-southam: {}
+southam: []
 
 oceania:
   - name: Game Workers Australia
     link: https://www.gameworkers.com.au/
 
-asia: {}
+asia: []
 
-africa: {}
+africa: []

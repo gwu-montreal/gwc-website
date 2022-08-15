@@ -176,4 +176,4 @@ collections:
     i18n: true
     fields:
       - { label: 'Page name', name: name, widget: string, i18n: duplicate }
-      - { label: 'Content', name: body, widget: markdown }
+      - { label: 'Content', name: body, widget: markdown, modes: [raw] }

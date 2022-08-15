@@ -29,14 +29,14 @@
       CMS.registerPreviewTemplate('pages', ContentPreview);
 
       CMS.registerEditorComponent({
-        id: "div",
+        id: "block",
         label: "HTML div block",
         fields: [
           {
             name: 'label',
             label: 'Label',
             widget: 'string'
-          }
+          },
           {
             name: 'content',
             label: 'Content',
@@ -59,10 +59,34 @@ ${data.content}
         },
         toPreview: function(data) {
           return `
-<div> <!-- non-previewed label: ${data.label} -->
+<div> ${data.label}
   ${data.content}
 </div>
       `;
+        }
+      });
+
+      CMS.registerEditorComponent({
+        id: "md-attrs",
+        label: "Markdown Attrs",
+        fields: [
+          {
+            name: 'attrs',
+            label: 'Attributes',
+            widget: 'string'
+          }
+        ],
+        pattern: /^<!--+ ?(.*?) ?-->$/m,
+        fromBlock: function(match) {
+          return {
+            attrs: match[1]
+          };
+        },
+        toBlock: function(data) {
+          return `<!--+ ${data.attrs} -->`;
+        },
+        toPreview: function(data) {
+          return `<!-- non-previewed attributes: ${data.attrs} -->`;
         }
       });
     </script>
