@@ -108,7 +108,6 @@ collections:
   - label: 'Content: English'
     name: content-en
     folder: 'src/en/content'
-    identifier_field: body
     summary: '{{ body | truncate(20) }}'
     create: true
     fields:
@@ -117,7 +116,6 @@ collections:
   - label: 'Content: Deutsch'
     name: content-de
     folder: 'src/de/content'
-    identifier_field: body
     summary: '{{ body | truncate(20) }}'
     create: true
     fields:
@@ -126,7 +124,6 @@ collections:
   - label: 'Content: Français'
     name: content-fr
     folder: 'src/fr/content'
-    identifier_field: body
     summary: '{{ body | truncate(20) }}'
     create: true
     fields:
