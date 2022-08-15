@@ -1,28 +1,30 @@
 ---
-regions:
-  - name: europe
-    orgs:
-      - name: STJV
-        location: France
-        link: https://www.stjv.fr/
+europe:
+  - name: STJV
+    location: France
+    link: https://www.stjv.fr/
 
-      - name: GWU Deutschland
-        link: https://twitter.com/GWU_Deutschland/
+  - name: GWU Deutschland
+    link: https://twitter.com/GWU_Deutschland/
 
-      - name: GWU Italy
-        link: https://twitter.com/GWU_Italy
+  - name: GWU Italy
+    link: https://twitter.com/GWU_Italy
 
-  - name: northam
-    orgs:
-      - name: GWU Toronto
-        location: Ontario, Canada
-        link: https://twitter.com/GWU_Toronto
+northam:
+  - name: GWU Toronto
+    location: Ontario, Canada
+    link: https://twitter.com/GWU_Toronto
 
-      - name: GWU Montréal
-        location: Québec, Canada
-        link: https://gwumtl.com/
+  - name: GWU Montréal
+    location: Québec, Canada
+    link: https://gwumtl.com/
+  
+southam: {}
 
-  - name: oceania
-    orgs:
-      - name: Game Workers Australia
-        link: https://www.gameworkers.com.au/
+oceania:
+  - name: Game Workers Australia
+    link: https://www.gameworkers.com.au/
+
+asia: {}
+
+africa: {}

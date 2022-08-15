@@ -32,19 +32,75 @@ collections:
         name: orgs
         file: 'src/_data/orgs.yaml'
         fields:
-          - label: 'Regions'
-            name: regions
+          - label: 'Europe'
+            name: europe
             widget: list
-            summary: '{{fields.name | upper}} orgs'
-            fields:
-              - label: 'Region tag'
-                name: name
-                widget: select
-                options: ['africa', 'asia', 'northam', 'southam', 'europe', 'oceania']
-              - label: 'Region orgs'
-                name: orgs
-                widget: list
-                summary: '{{fields.name}} ({{fields.link}})'
+            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+                fields:
+                  - { label: 'Organization name', name: name, widget: string }
+                  - {
+                      label: 'Location',
+                      name: location,
+                      widget: string,
+                      required: false,
+                    }
+                  - { label: 'Link', name: link, widget: string }
+          - label: 'North America'
+            name: northam
+            widget: list
+            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+                fields:
+                  - { label: 'Organization name', name: name, widget: string }
+                  - {
+                      label: 'Location',
+                      name: location,
+                      widget: string,
+                      required: false,
+                    }
+                  - { label: 'Link', name: link, widget: string }
+          - label: 'South America'
+            name: southam
+            widget: list
+            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+                fields:
+                  - { label: 'Organization name', name: name, widget: string }
+                  - {
+                      label: 'Location',
+                      name: location,
+                      widget: string,
+                      required: false,
+                    }
+                  - { label: 'Link', name: link, widget: string }
+          - label: 'Oceania'
+            name: oceania
+            widget: list
+            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+                fields:
+                  - { label: 'Organization name', name: name, widget: string }
+                  - {
+                      label: 'Location',
+                      name: location,
+                      widget: string,
+                      required: false,
+                    }
+                  - { label: 'Link', name: link, widget: string }
+          - label: 'Asia'
+            name: asia
+            widget: list
+            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+                fields:
+                  - { label: 'Organization name', name: name, widget: string }
+                  - {
+                      label: 'Location',
+                      name: location,
+                      widget: string,
+                      required: false,
+                    }
+                  - { label: 'Link', name: link, widget: string }
+          - label: 'Africa'
+            name: africa
+            widget: list
+            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
                 fields:
                   - { label: 'Organization name', name: name, widget: string }
                   - {
@@ -70,6 +126,7 @@ collections:
           - label: 'Localized strings'
             name: i18n
             widget: list
+            collapsed: false
             summary: '{{fields.key}}: {{fields.t}}'
             fields:
               - { label: 'Key', name: key, widget: string }
@@ -87,6 +144,7 @@ collections:
           - label: 'Lokalisierte Zeichenfolgen'
             name: i18n
             widget: list
+            collapsed: false
             summary: '{{fields.key}}: {{fields.t}}'
             fields:
               - { label: 'Schlüssel', name: key, widget: string }
@@ -104,6 +162,7 @@ collections:
           - label: 'Textes traduits'
             name: i18n
             widget: list
+            collapsed: false
             summary: '{{fields.key}}: {{fields.t}}'
             fields:
               - { label: 'Clé', name: key, widget: string }
@@ -111,7 +170,7 @@ collections:
 
   - label: 'Pages'
     name: pages
-    folder: 'src'
+    folder: 'src/en'
     filter: { field: 'pagefile', value: 'true' }
     identifier-field: name
     create: true

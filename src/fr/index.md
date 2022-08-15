@@ -17,11 +17,14 @@ The Game Workers Coalition was formed by several international labour organizati
 ::: <!--+ #orgs-list -->
 ## Member organizations:
 
-{% for region in orgs.regions %}
-- ### {% i18n region.name %} <!--+ .region-name -->
-  {% for org in region.orgs %}
-  - [{{ org.name }}]({{ org.link }}){% if org.location %} <span>({{ org.location }})</span>{% endif %}{% endfor %}
-{% endfor %}
+{% for regionname, region in orgs -%}
+  {% if region.length %}
+  - ### {% i18n regionname %} <!--+ .region-name -->
+    {% for org in region %}
+    - [{{ org.name }}]({{ org.link }}){% if org.location %} <span>({{ org.location }})</span>{% endif %}
+    {%- endfor %}
+  {%- endif %}
+{%- endfor %}
 :::
 
 ::: <!--+ #bottom-text .text-block -->
