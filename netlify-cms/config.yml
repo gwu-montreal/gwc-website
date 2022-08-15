@@ -35,7 +35,7 @@ collections:
           - label: 'Europe'
             name: europe
             widget: list
-            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+            summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
               - { label: 'Organization name', name: name, widget: string }
               - {
@@ -48,7 +48,7 @@ collections:
           - label: 'North America'
             name: northam
             widget: list
-            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+            summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
               - { label: 'Organization name', name: name, widget: string }
               - {
@@ -61,7 +61,7 @@ collections:
           - label: 'South America'
             name: southam
             widget: list
-            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+            summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
               - { label: 'Organization name', name: name, widget: string }
               - {
@@ -74,7 +74,7 @@ collections:
           - label: 'Oceania'
             name: oceania
             widget: list
-            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+            summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
               - { label: 'Organization name', name: name, widget: string }
               - {
@@ -87,7 +87,7 @@ collections:
           - label: 'Asia'
             name: asia
             widget: list
-            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+            summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
               - { label: 'Organization name', name: name, widget: string }
               - {
@@ -100,7 +100,7 @@ collections:
           - label: 'Africa'
             name: africa
             widget: list
-            summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
+            summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
               - { label: 'Organization name', name: name, widget: string }
               - {
@@ -170,8 +170,7 @@ collections:
 
   - label: 'Pages'
     name: pages
-    folder: 'src/en'
-    filter: { field: 'pagefile', value: 'true' }
+    folder: 'src'
     identifier-field: name
     create: true
     i18n: true
