@@ -19,9 +19,9 @@
           return h(
             'div',
             { id: 'container' },
-            h('div', { id: 'header' }, {}),
+            h('div', { id: 'header' }),
             h('main', { id: 'content' }, this.props.widgetFor('body')),
-            h('div', { id: 'footer' }, {})
+            h('div', { id: 'footer' })
           );
         },
       });

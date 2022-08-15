@@ -74,8 +74,6 @@ collections:
   - label: 'Content: English'
     name: content-en
     folder: 'src/en/content'
-    identifier_field: name
     create: true
     fields:
-      - { label: 'Name', name: name, widget: string }
       - { label: 'Content', name: body, widget: markdown }
