@@ -36,80 +36,80 @@ collections:
             name: europe
             widget: list
             summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
-                fields:
-                  - { label: 'Organization name', name: name, widget: string }
-                  - {
-                      label: 'Location',
-                      name: location,
-                      widget: string,
-                      required: false,
-                    }
-                  - { label: 'Link', name: link, widget: string }
+            fields:
+              - { label: 'Organization name', name: name, widget: string }
+              - {
+                  label: 'Location',
+                  name: location,
+                  widget: string,
+                  required: false,
+                }
+              - { label: 'Link', name: link, widget: string }
           - label: 'North America'
             name: northam
             widget: list
             summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
-                fields:
-                  - { label: 'Organization name', name: name, widget: string }
-                  - {
-                      label: 'Location',
-                      name: location,
-                      widget: string,
-                      required: false,
-                    }
-                  - { label: 'Link', name: link, widget: string }
+            fields:
+              - { label: 'Organization name', name: name, widget: string }
+              - {
+                  label: 'Location',
+                  name: location,
+                  widget: string,
+                  required: false,
+                }
+              - { label: 'Link', name: link, widget: string }
           - label: 'South America'
             name: southam
             widget: list
             summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
-                fields:
-                  - { label: 'Organization name', name: name, widget: string }
-                  - {
-                      label: 'Location',
-                      name: location,
-                      widget: string,
-                      required: false,
-                    }
-                  - { label: 'Link', name: link, widget: string }
+            fields:
+              - { label: 'Organization name', name: name, widget: string }
+              - {
+                  label: 'Location',
+                  name: location,
+                  widget: string,
+                  required: false,
+                }
+              - { label: 'Link', name: link, widget: string }
           - label: 'Oceania'
             name: oceania
             widget: list
             summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
-                fields:
-                  - { label: 'Organization name', name: name, widget: string }
-                  - {
-                      label: 'Location',
-                      name: location,
-                      widget: string,
-                      required: false,
-                    }
-                  - { label: 'Link', name: link, widget: string }
+            fields:
+              - { label: 'Organization name', name: name, widget: string }
+              - {
+                  label: 'Location',
+                  name: location,
+                  widget: string,
+                  required: false,
+                }
+              - { label: 'Link', name: link, widget: string }
           - label: 'Asia'
             name: asia
             widget: list
             summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
-                fields:
-                  - { label: 'Organization name', name: name, widget: string }
-                  - {
-                      label: 'Location',
-                      name: location,
-                      widget: string,
-                      required: false,
-                    }
-                  - { label: 'Link', name: link, widget: string }
+            fields:
+              - { label: 'Organization name', name: name, widget: string }
+              - {
+                  label: 'Location',
+                  name: location,
+                  widget: string,
+                  required: false,
+                }
+              - { label: 'Link', name: link, widget: string }
           - label: 'Africa'
             name: africa
             widget: list
             summary: '{{fields.name}}: {{fields.link}} {{fields.location}}'
-                fields:
-                  - { label: 'Organization name', name: name, widget: string }
-                  - {
-                      label: 'Location',
-                      name: location,
-                      widget: string,
-                      required: false,
-                    }
-                  - { label: 'Link', name: link, widget: string }
+            fields:
+              - { label: 'Organization name', name: name, widget: string }
+              - {
+                  label: 'Location',
+                  name: location,
+                  widget: string,
+                  required: false,
+                }
+              - { label: 'Link', name: link, widget: string }
 
   - label: 'Language Data'
     name: lang
