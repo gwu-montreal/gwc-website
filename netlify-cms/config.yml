@@ -74,6 +74,8 @@ collections:
   - label: 'Content: English'
     name: content-en
     folder: 'src/en/content'
+    identifier_field: summary
+    summary: '{{ body | truncate(20) }}'
     create: true
     fields:
       - { label: 'Content', name: body, widget: markdown }
