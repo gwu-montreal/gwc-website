@@ -2,7 +2,8 @@ const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const yaml = require('js-yaml');
 const metagen = require('eleventy-plugin-metagen');
 const markdownIt = require('markdown-it');
-const markdownItReplacements = require('markdown-it-replacements');
+const mditContainer = require('markdown-it-container');
+const mditAttrs = require('markdown-it-attrs');
 
 module.exports = function (eleventyConfig) {
   // Add plugin to render MD fragments inside html files
@@ -11,28 +12,23 @@ module.exports = function (eleventyConfig) {
   // eleventy-plugin-metagen
   eleventyConfig.addPlugin(metagen);
 
-  // Configure MD replacements
-  const replacements = [
-    [/(^|[\s\p{P}])'(\S)/gu, '$1\u2018$2'],
-    [/(\S)'([\s\p{P}]|$)/gu, '$1\u2019$2'],
-    [/(^|[\s\p{P}])"(\S)/gu, '$1\u201c$2'],
-    [/(\S)"([\s\p{P}]|$)/gu, '$1\u201d$2'],
-  ];
-  for (const r of replacements) {
-    markdownItReplacements.replacements.push({
-      name: r[1],
-      re: r[0],
-      sub: r[1],
-      default: true,
-    });
-  }
-
-  // Change default Markdown preprocessor to use above replacements
+  // Change default Markdown preprocessor to use plugins
   eleventyConfig.setLibrary(
     'md',
     markdownIt({
       html: true,
-    }).use(markdownItReplacements, { ellipsis: false })
+      typographer: true,
+      breaks: true,
+      linkify: true,
+    })
+      .use(mditContainer, 'div', {
+        validate: () => true,
+      })
+      .use(mditAttrs, {
+        leftDelimiter: '<!--+',
+        rightDelimiter: '-->',
+        allowedAttributes: ['id', 'class'],
+      })
   );
 
   // Disable automatic use of .gitignore
@@ -67,6 +63,7 @@ module.exports = function (eleventyConfig) {
       includes: '_build/layouts',
       data: '_data',
     },
+    markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
   };
 };

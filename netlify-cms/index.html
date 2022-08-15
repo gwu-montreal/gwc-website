@@ -26,7 +26,45 @@
         },
       });
 
-      CMS.registerPreviewTemplate('content-en', ContentPreview);
+      CMS.registerPreviewTemplate('pages', ContentPreview);
+
+      CMS.registerEditorComponent({
+        id: "div",
+        label: "HTML div block",
+        fields: [
+          {
+            name: 'label',
+            label: 'Label',
+            widget: 'string'
+          }
+          {
+            name: 'content',
+            label: 'Content',
+            widget: 'markdown'
+          }
+        ],
+        pattern: /^::: ?(.*?)\n(.*?):::$/ms,
+        fromBlock: function(match) {
+          return {
+            label: match[1],
+            content: match[2]
+          };
+        },
+        toBlock: function(data) {
+          return `
+::: ${data.label}
+${data.content}
+:::
+      `;
+        },
+        toPreview: function(data) {
+          return `
+<div> <!-- non-previewed label: ${data.label} -->
+  ${data.content}
+</div>
+      `;
+        }
+      });
     </script>
 
     <!-- Netlify Identity Widget -->

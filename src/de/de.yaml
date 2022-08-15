@@ -6,7 +6,7 @@ sitedescription: The Game Workers Coalition is an international collective of la
 i18n:
   - { key: 'africa', t: 'Africa' }
   - { key: 'asia', t: 'Asia' }
-  - { key: 'na', t: 'North America' }
-  - { key: 'sa', t: 'South America' }
+  - { key: 'northam', t: 'North America' }
+  - { key: 'southam', t: 'South America' }
   - { key: 'europe', t: 'Europe' }
   - { key: 'oceania', t: 'Oceania' }

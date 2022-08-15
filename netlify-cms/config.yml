@@ -11,6 +11,10 @@ public_folder: '/assets/img'
 
 site_url: 'https://gameworkerscoalition.org'
 
+i18n:
+  structure: multiple_folders
+  locales: [en, de, fr]
+
 collections:
   - label: 'Global Data'
     name: data
@@ -36,7 +40,7 @@ collections:
               - label: 'Region tag'
                 name: name
                 widget: select
-                options: ['africa', 'asia', 'na', 'sa', 'europe', 'oceania']
+                options: ['africa', 'asia', 'northam', 'southam', 'europe', 'oceania']
               - label: 'Region orgs'
                 name: orgs
                 widget: list
@@ -105,26 +109,13 @@ collections:
               - { label: 'Clé', name: key, widget: string }
               - { label: 'Traduction', name: t, widget: string }
 
-  - label: 'Content: English'
-    name: content-en
-    folder: 'src/en/content'
-    summary: '{{ body | truncate(20) }}'
+  - label: 'Pages'
+    name: pages
+    folder: 'src'
+    filter: { field: 'pagefile', value: 'true' }
+    identifier-field: name
     create: true
+    i18n: true
     fields:
+      - { label: 'Page name', name: name, widget: string, i18n: duplicate }
       - { label: 'Content', name: body, widget: markdown }
-
-  - label: 'Content: Deutsch'
-    name: content-de
-    folder: 'src/de/content'
-    summary: '{{ body | truncate(20) }}'
-    create: true
-    fields:
-      - { label: 'Inhalt', name: body, widget: markdown }
-
-  - label: 'Content: Français'
-    name: content-fr
-    folder: 'src/fr/content'
-    summary: '{{ body | truncate(20) }}'
-    create: true
-    fields:
-      - { label: 'Contenu', name: body, widget: markdown }

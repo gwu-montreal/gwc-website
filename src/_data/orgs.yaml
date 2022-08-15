@@ -12,7 +12,7 @@ regions:
       - name: GWU Italy
         link: https://twitter.com/GWU_Italy
 
-  - name: na
+  - name: northam
     orgs:
       - name: GWU Toronto
         location: Ontario, Canada
