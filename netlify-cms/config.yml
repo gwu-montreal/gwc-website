@@ -31,7 +31,7 @@ collections:
           - label: 'Regions'
             name: regions
             widget: list
-            summary: '{{fields.name}}: {{fields.orgs.length}} orgs'
+            summary: '{{fields.name | upper}} orgs'
             fields:
               - label: 'Region tag'
                 name: name
@@ -70,6 +70,40 @@ collections:
             fields:
               - { label: 'Key', name: key, widget: string }
               - { label: 'Translation', name: t, widget: string }
+      - label: 'Deutsch'
+        name: data-de
+        file: 'src/de/de.yaml'
+        fields:
+          - { label: 'lang', name: langtag, widget: hidden, default: 'de' }
+          - {
+              label: 'Website-Beschreibung',
+              name: sitedescription,
+              widget: string,
+            }
+          - label: 'Lokalisierte Zeichenfolgen'
+            name: i18n
+            widget: list
+            summary: '{{fields.key}}: {{fields.t}}'
+            fields:
+              - { label: 'Schlüssel', name: key, widget: string }
+              - { label: 'Übersetzung', name: t, widget: string }
+      - label: 'Français'
+        name: data-fr
+        file: 'src/fr/fr.yaml'
+        fields:
+          - { label: 'lang', name: langtag, widget: hidden, default: 'fr' }
+          - {
+              label: 'Description du site',
+              name: sitedescription,
+              widget: string,
+            }
+          - label: 'Textes traduits'
+            name: i18n
+            widget: list
+            summary: '{{fields.key}}: {{fields.t}}'
+            fields:
+              - { label: 'Clé', name: key, widget: string }
+              - { label: 'Traduction', name: t, widget: string }
 
   - label: 'Content: English'
     name: content-en
@@ -79,3 +113,21 @@ collections:
     create: true
     fields:
       - { label: 'Content', name: body, widget: markdown }
+
+  - label: 'Content: Deutsch'
+    name: content-de
+    folder: 'src/de/content'
+    identifier_field: body
+    summary: '{{ body | truncate(20) }}'
+    create: true
+    fields:
+      - { label: 'Inhalt', name: body, widget: markdown }
+
+  - label: 'Content: Français'
+    name: content-fr
+    folder: 'src/fr/content'
+    identifier_field: body
+    summary: '{{ body | truncate(20) }}'
+    create: true
+    fields:
+      - { label: 'Contenu', name: body, widget: markdown }
