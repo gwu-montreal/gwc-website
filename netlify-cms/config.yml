@@ -108,6 +108,7 @@ collections:
   - label: 'Language Data'
     name: i18n
     folder: '_i18n'
+    extension: yaml
     identifier-field: file
     editor:
       preview: false
@@ -130,6 +131,7 @@ collections:
   - label: 'Pages'
     name: pages
     folder: 'src'
+    extension: md
     identifier-field: name
     create: true
     delete: false
