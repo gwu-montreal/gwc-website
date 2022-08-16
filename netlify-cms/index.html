@@ -28,7 +28,9 @@
 
       CMS.registerPreviewTemplate('pages', ContentPreview);
 
-      CMS.registerEditorComponent({
+      CMS.registerRemarkPlugin('remark-container', { className: '' });
+
+      {# CMS.registerEditorComponent({
         id: "block",
         label: "HTML div block",
         fields: [
@@ -64,7 +66,7 @@ ${data.content}
 </div>
       `;
         }
-      });
+      }); #}
 
       CMS.registerEditorComponent({
         id: "md-attrs",

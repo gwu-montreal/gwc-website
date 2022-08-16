@@ -5,7 +5,7 @@ pagefile: true
 ---
 
 ::: <!--+ #description .text-block -->
-## About the GWC
+## Deutsch
 
 The Game Workers Coalition is a communication network for worker-led labour organizations and unions in the games industry.
 

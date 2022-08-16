@@ -26,8 +26,8 @@ collections:
         name: siteinfo
         file: 'src/_data/siteinfo.yaml'
         fields:
-          - { label: 'Title', name: title, widget: string }
-          - { label: 'Url', name: url, widget: string }
+          - { name: title, widget: string }
+          - { name: url, widget: string }
       - label: 'Organizations'
         name: orgs
         file: 'src/_data/orgs.yaml'
@@ -37,97 +37,95 @@ collections:
             widget: list
             summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
-              - { label: 'Organization name', name: name, widget: string }
+              - { name: name, widget: string }
               - {
-                  label: 'Location',
                   name: location,
                   widget: string,
                   required: false,
                 }
-              - { label: 'Link', name: link, widget: string }
-          - label: 'North America'
+              - { name: link, widget: string }
+          - label: 'North America (northam)'
             name: northam
             widget: list
             summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
-              - { label: 'Organization name', name: name, widget: string }
+              - { name: name, widget: string }
               - {
-                  label: 'Location',
                   name: location,
                   widget: string,
                   required: false,
                 }
-              - { label: 'Link', name: link, widget: string }
-          - label: 'South America'
+              - { name: link, widget: string }
+          - label: 'South America (southam)'
             name: southam
             widget: list
             summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
-              - { label: 'Organization name', name: name, widget: string }
+              - { name: name, widget: string }
               - {
-                  label: 'Location',
                   name: location,
                   widget: string,
                   required: false,
                 }
-              - { label: 'Link', name: link, widget: string }
+              - { name: link, widget: string }
           - label: 'Oceania'
             name: oceania
             widget: list
             summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
-              - { label: 'Organization name', name: name, widget: string }
+              - { name: name, widget: string }
               - {
-                  label: 'Location',
                   name: location,
                   widget: string,
                   required: false,
                 }
-              - { label: 'Link', name: link, widget: string }
+              - { name: link, widget: string }
           - label: 'Asia'
             name: asia
             widget: list
             summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
-              - { label: 'Organization name', name: name, widget: string }
+              - { name: name, widget: string }
               - {
-                  label: 'Location',
                   name: location,
                   widget: string,
                   required: false,
                 }
-              - { label: 'Link', name: link, widget: string }
+              - { name: link, widget: string }
           - label: 'Africa'
             name: africa
             widget: list
             summary: '{{fields.name}} | {{fields.location}} {{fields.link}}'
             fields:
-              - { label: 'Organization name', name: name, widget: string }
+              - { name: name, widget: string }
               - {
-                  label: 'Location',
                   name: location,
                   widget: string,
                   required: false,
                 }
-              - { label: 'Link', name: link, widget: string }
+              - { name: link, widget: string }
 
   - label: 'Language Data'
     name: lang
     editor:
       preview: false
     delete: false
+    i18n:
+      structure: single_file
     files:
       - label: 'English'
         name: data-en
         file: 'src/en/en.yaml'
+        i18n: true
         fields:
-          - { label: 'lang', name: langtag, widget: hidden, default: 'en' }
-          - { label: 'Site Description', name: sitedescription, widget: string }
+          - { name: langtag, widget: hidden, default: 'en' }
+          - { label: 'Site Description', name: sitedescription, widget: string, i18n: true }
           - label: 'Localized strings'
             name: i18n
             widget: list
             collapsed: false
             summary: '{{fields.key}}: {{fields.t}}'
+            i18n: true
             fields:
               - { label: 'Key', name: key, widget: string }
               - { label: 'Translation', name: t, widget: string }
@@ -135,7 +133,7 @@ collections:
         name: data-de
         file: 'src/de/de.yaml'
         fields:
-          - { label: 'lang', name: langtag, widget: hidden, default: 'de' }
+          - { name: langtag, widget: hidden, default: 'de' }
           - {
               label: 'Website-Beschreibung',
               name: sitedescription,
@@ -153,7 +151,7 @@ collections:
         name: data-fr
         file: 'src/fr/fr.yaml'
         fields:
-          - { label: 'lang', name: langtag, widget: hidden, default: 'fr' }
+          - { name: langtag, widget: hidden, default: 'fr' }
           - {
               label: 'Description du site',
               name: sitedescription,
@@ -176,4 +174,4 @@ collections:
     i18n: true
     fields:
       - { label: 'Page name', name: name, widget: string, i18n: duplicate }
-      - { label: 'Content', name: body, widget: markdown, modes: [raw] }
+      - { label: 'Content', name: body, widget: markdown, modes: [raw], i18n: true }
