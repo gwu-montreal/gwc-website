@@ -45,7 +45,7 @@ module.exports = function (eleventyConfig) {
   // Create translations object
   const translations = {};
   for (const lang of ['en', 'de', 'fr']) {
-    const i18nFile = yaml.load(fs.readFileSync(`src/_i18n/i18n.${lang}.yaml`, 'utf8'));
+    const i18nFile = yaml.load(fs.readFileSync(`src/_i18n/localization.${lang}.yaml`, 'utf8'));
     for (const {key, t} of i18nFile.data) {
       if (!translations[key]) {
         translations[key] = {};
