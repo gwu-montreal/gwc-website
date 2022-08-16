@@ -1,7 +1,6 @@
 ---
 name: index
 layout: default
-pagefile: true
 ---
 
 ::: <!--+ #description .text-block -->

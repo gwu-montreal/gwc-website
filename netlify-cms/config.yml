@@ -107,12 +107,13 @@ collections:
   
   - label: 'Language Data'
     name: i18n
+    folder: '_i18n'
+    identifier-field: file
     editor:
       preview: false
-    folder: 'src'
-    identifier-field: file
     delete: false
-    i18n: true
+    i18n:
+      structure: multiple_files
     fields:
       - { name: file, widget: hidden }
       - label: 'Localized strings'
