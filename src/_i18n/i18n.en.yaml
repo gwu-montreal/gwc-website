@@ -1,5 +1,5 @@
 ---
-file: 'i18n'
+title: 'i18n'
 data:
   - { key: 'sitedesc', t: 'The Game Workers Coalition is an international collective of labour organizations in the videogames industry.' }
   - { key: 'africa', t: 'Africa' }

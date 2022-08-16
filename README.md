@@ -1,66 +1,70 @@
-## How this works:
+# How this works:
 
 In the src directory...
 
 - **\_assets**: images, fonts, etc. that will be simply used as-is in the final website;
 - **\_build**: html layouts, css and js files that will be processed to generate the html pages, `style.css` and `script.js` respectively;
 - **\_data**: _language-agnostic_ data files that can be referenced in the whole site.
+- **\_i18n**: _language-related_ data files that can be referenced in the whole site.
 
-**In the language folders** (e.g. `src/en/`):
+**In each language folder** (e.g. `src/en/`):
 
-- One **data file** named like the language (e.g. `src/en/en.yaml`) contains _localized_ data to be referenced in those pages (see below on how to output localized string);
-- One **content folder** (e.g. `src/en/content/`) contains snippets that can be rendered in pages, but don't generate pages themselves;
-- All the remaining html and markdown files are converted into individual pages in the final website.
+- One data named like the language (e.g. `src/en/en.yaml`) contains data that can be referenced in those pages;
+- Several markdown files that are each converted into individual pages in the final website. **_These should be the only files that are relevant to most editors._**
 
-## How to edit the CSS and JS:
+# How to edit the CSS and JS:
 
-Feel free to add as many files as needed, as long as they're imported.
+You can add css files in `src/_build/css`, and js in `src/_build/js`.
+Feel free to add as many files as you want, **_but make sure they're imported_**:
+- to import CSS, add `@import '<your css file name without the extension>';` inside `init.css`.
+- to import JS, add `import '<your js file name without the extension>';` at the top of `init.js`.
+
 Importing is useful because you can split the code into several files to keep it organized.
-
-To import CSS, add `@import '<your css file name without the extension>';` inside `init.css`.
-To import JS, add `import '<your js file name without the extension>';` at the top of `init.js`.
 
 > CSS is processed with PostCSS, using _each_ and _nested_ features.
 > JS is processed with esbuild.
 
-## How to add pages:
+# How to add pages:
 
-Simply create a new html or markdown file in the corresponding **language folder**, adding the relevant _front matter_.
+Simply create a new html or markdown file in the corresponding **language folder**, adding the relevant _frontmatter_.
+Note that only markdown files will be visible in the CMS.
 
-### Wait what's "front matter"?
+### Wait what's "frontmatter"?
 
 At the top of every page file, there's information about that page. It's used when generating the website. Front matter data looks like this:
 
 ```
 ---
+name: index
 layout: default
 title: 'Home'
 description: 'The GWC's home page'
 ---
 ```
 
+- **_name_** corresponds to the file name, and it'll be used in the url too.
 - **_layout_** indicates which layout from the `_build/layouts` folder to use as a "html wrapper". You can generally use `default`.
-- **_title_** and **_description_** are pretty self-explanatory, they're optional.
+- **_title_** and **_description_** are pretty self-explanatory, they will show up when sharing the page for instance; they're optional.
 
 There can also be extra elements in the front matter that can then be referenced in the page's html.
 
 > For more info on how all this works, check out the [Eleventy documentation](https://www.11ty.dev/docs/). (You don't need to understand any of that though.)
 
-## How to output localized strings from the language data file?
+## How to output data from the frontmatter?
 
-Using this snippet: `{% i18n <some key> %}` in a page automatically outputs the corresponding string if it's listed under `i18n` in the data file.
+Whether the page is a markdown or html file, it's first processed as _[Nunjucks](https://mozilla.github.io/nunjucks/)_, which allows you to perform operations on your content or code that will _transform it_ into the final html file. For instance, `{{ title }}` will output the title from the frontmatter. If you want to learn more about the language and the possibilities, click the above link; otherwise, just know that anything in between curly braces `{{ }}` or `{% %}` is probably doing Nunjucks thing.
 
-For instance, if you had `i18n: - { key: 'hi', t: 'Salut' }` in `fr.yaml` in the fr folder, then any page in that same folder could use `{% i18n hi %}` and it would output 'Salut' in the final website.
+## How to output localized strings?
 
-If the translation doesn't exist, then the key is output as-is ('hi' in the example above) but wrapped in a `<span>` tag with the 'untranslated' class.
+Using this snippet: `{{ <key> | i18n }}` in a page automatically outputs the corresponding string if it's listed in the current language's data file from the `_i18n` folder.
 
-## How to render things from the content folder in a page:
+For instance, if you had `data: - { key: 'hi', t: 'Salut' }` in `src/_i18n/i18n.fr.yaml`, then any page from the `src/fr` folder could use `{% i18n hi %}` and it would output 'Salut' in the final website.
 
-Everything in **data files** is automatically "read" when generating the website (so that data can be referenced directly from any page without any extra step needed), but the files in the **content folder** need to be linked manually.
+If the translation doesn't exist, English is used as a fallback.
 
-You can use this little snippet in a page's html: `{% renderFile "./src/<language>/content/<your file>" %}`. For instance, you can write `{% renderFile "./src/en/content/example.md" %}` in a page to render the markdown from `example.md`.
+> For details and extra features of the i18n plugin, [https://github.com/adamduncan/eleventy-plugin-i18n](https://www.11ty.dev/docs/).
 
-## How to test and build locally:
+# How to test and build locally:
 
 ### If you have no idea what 'pnpm' refers to...
 
