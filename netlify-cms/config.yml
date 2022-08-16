@@ -110,22 +110,18 @@ collections:
     editor:
       preview: false
     delete: false
-    i18n:
-      structure: single_file
     files:
       - label: 'English'
         name: data-en
         file: 'src/en/en.yaml'
-        i18n: true
         fields:
           - { name: langtag, widget: hidden, default: 'en' }
           - { label: 'Site Description', name: sitedescription, widget: string, i18n: true }
           - label: 'Localized strings'
+            label_singular: 'string'
             name: i18n
             widget: list
-            collapsed: false
             summary: '{{fields.key}}: {{fields.t}}'
-            i18n: true
             fields:
               - { label: 'Key', name: key, widget: string }
               - { label: 'Translation', name: t, widget: string }
@@ -140,9 +136,9 @@ collections:
               widget: string,
             }
           - label: 'Lokalisierte Zeichenfolgen'
+            label_singular: 'zeichenfolge'
             name: i18n
             widget: list
-            collapsed: false
             summary: '{{fields.key}}: {{fields.t}}'
             fields:
               - { label: 'Schlüssel', name: key, widget: string }
@@ -157,10 +153,10 @@ collections:
               name: sitedescription,
               widget: string,
             }
-          - label: 'Textes traduits'
+          - label: 'Termes traduits'
+            label_singular: 'terme'
             name: i18n
             widget: list
-            collapsed: false
             summary: '{{fields.key}}: {{fields.t}}'
             fields:
               - { label: 'Clé', name: key, widget: string }
