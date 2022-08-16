@@ -1,9 +1,11 @@
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
+const fs = require('graceful-fs');
 const yaml = require('js-yaml');
 const metagen = require('eleventy-plugin-metagen');
 const markdownIt = require('markdown-it');
 const mditContainer = require('markdown-it-container');
 const mditAttrs = require('markdown-it-attrs');
+const i18n = require('eleventy-plugin-i18n');
 
 module.exports = function (eleventyConfig) {
   // Add plugin to render MD fragments inside html files
@@ -40,10 +42,22 @@ module.exports = function (eleventyConfig) {
   // Read yaml data files
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
 
-  // Add i18n shortcode
-  eleventyConfig.addShortcode('i18n', function (str) {
-    const t = (this.ctx.i18n.find(e => e.key === str) || {}).t;
-    return t || `<span class="untranslated">${str}</span>`;
+  // Create translations object
+  const translations = {};
+  for (const lang of ['en', 'de', 'fr']) {
+    const i18nFile = yaml.load(fs.readFileSync(`src/${lang}/i18n.yaml`, 'utf8'));
+    for (const {key, t} of i18nFile.data) {
+      if (!translations[key]) {
+        translations[key] = {};
+      }
+      translations[key][lang] = t;
+    }
+  }
+
+  // Add i18n plugin
+  eleventyConfig.addPlugin(i18n, {
+    translations,
+    fallbackLocales: { '*': 'en' }
   });
 
   // Copy assets to /_site

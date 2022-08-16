@@ -28,11 +28,9 @@
 
       CMS.registerPreviewTemplate('pages', ContentPreview);
 
-      CMS.registerRemarkPlugin('remark-container', { className: '' });
-
       CMS.registerEditorComponent({
-        id: "md-attrs",
-        label: "Markdown Attrs",
+        id: 'md-attrs',
+        label: 'Markdown Attrs',
         fields: [
           {
             name: 'attrs',
@@ -50,7 +48,23 @@
           return `<!--+ ${data.attrs} -->`;
         },
         toPreview: function(data) {
-          return `<!-- non-previewed attributes: ${data.attrs} -->`;
+          return `<i>non-previewed attributes: ${data.attrs}</i>`;
+        }
+      });
+
+      CMS.registerEditorComponent({
+        id: 'div',
+        label: 'HTML div tag',
+        fields: [],
+        pattern: /^:::$/ms,
+        fromBlock: function(match) {
+          return {};
+        },
+        toBlock: function(data) {
+          return ':::';
+        },
+        toPreview: function(data) {
+          return '<i>non-previewed div tag</i>';
         }
       });
     </script>

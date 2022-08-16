@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="{{ locale }}">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% set sitedescription = 'sitedesc' | i18n %}
 
     {% metagen title=title+' | '+siteinfo.title if title else siteinfo.title,
     desc=description if description else sitedescription,
@@ -28,6 +30,8 @@
       </div>
 
       <main id="content">{{ content | safe }}</main>
+
+      {{ test }}
 
       <div id="footer"></div>
     </div>
