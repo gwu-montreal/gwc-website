@@ -5,11 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% set sitedescription = 'sitedesc' | i18n %}
-
-    {% metagen title=title+' | '+siteinfo.title if title else siteinfo.title,
-    desc=description if description else sitedescription,
-    url='https://'+siteinfo.url+page.url %}
+    {% set sitedescription = 'sitedesc' | i18n %} {% metagen title=title+' |
+    '+siteinfo.title if title else siteinfo.title, desc=description if
+    description else sitedescription, url='https://'+siteinfo.url+page.url %}
 
     <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
 
@@ -30,8 +28,6 @@
       </div>
 
       <main id="content">{{ content | safe }}</main>
-
-      {{ test }}
 
       <div id="footer"></div>
     </div>
