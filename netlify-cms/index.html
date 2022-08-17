@@ -35,38 +35,46 @@
           {
             name: 'attrs',
             label: 'Attributes',
-            widget: 'string'
-          }
+            widget: 'string',
+          },
         ],
-        pattern: /^<!--+ ?(.*?) ?-->$/m,
-        fromBlock: function(match) {
+        pattern: /<!--\+ ?(.*?) ?-->/m,
+        fromBlock: function (match) {
           return {
-            attrs: match[1]
+            attrs: match[1],
           };
         },
-        toBlock: function(data) {
+        toBlock: function (data) {
           return `<!--+ ${data.attrs} -->`;
         },
-        toPreview: function(data) {
-          return `<i>non-previewed attributes: ${data.attrs}</i>`;
-        }
+        toPreview: function (data) {
+          return `<i class="no-preview">attributes: ${data.attrs}</i>`;
+        },
       });
 
       CMS.registerEditorComponent({
         id: 'div',
         label: 'HTML div tag',
         fields: [],
-        pattern: /^:::$/ms,
-        fromBlock: function(match) {
+        pattern: /:::/ms,
+        fromBlock: function (match) {
           return {};
         },
-        toBlock: function(data) {
+        toBlock: function (data) {
           return ':::';
         },
-        toPreview: function(data) {
-          return '<i>non-previewed div tag</i>';
-        }
+        toPreview: function (data) {
+          return '<i class="no-preview">div tag</i>';
+        },
       });
+
+      CMS.registerPreviewStyle(
+        `
+        position: absolute;
+        font-size: 9px;
+      `,
+        { raw: true }
+      );
     </script>
 
     <!-- Netlify Identity Widget -->
