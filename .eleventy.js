@@ -1,4 +1,4 @@
-const { EleventyRenderPlugin } = require('@11ty/eleventy');
+const { EleventyRenderPlugin, EleventyI18nPlugin } = require('@11ty/eleventy');
 const fs = require('graceful-fs');
 const yaml = require('js-yaml');
 const metagen = require('eleventy-plugin-metagen');
@@ -6,6 +6,14 @@ const markdownIt = require('markdown-it');
 const mditContainer = require('markdown-it-container');
 const mditAttrs = require('markdown-it-attrs');
 const i18n = require('eleventy-plugin-i18n');
+
+// TODO: can this be derived from the data implicitly, rather than needing to
+// specify it in the config in duplicate like this?
+const LOCALES = {
+  en: 'English',
+  de: 'Deutsch',
+  fr: 'Français',
+};
 
 module.exports = function (eleventyConfig) {
   // Add plugin to render MD fragments inside html files
@@ -44,9 +52,11 @@ module.exports = function (eleventyConfig) {
 
   // Create translations object
   const translations = {};
-  for (const lang of ['en', 'de', 'fr']) {
-    const i18nFile = yaml.load(fs.readFileSync(`src/_i18n/localization.${lang}.yaml`, 'utf8'));
-    for (const {key, t} of i18nFile.data) {
+  for (const lang of Object.keys(LOCALES)) {
+    const i18nFile = yaml.load(
+      fs.readFileSync(`src/_i18n/localization.${lang}.yaml`, 'utf8')
+    );
+    for (const { key, t } of i18nFile.data) {
       if (!translations[key]) {
         translations[key] = {};
       }
@@ -54,10 +64,44 @@ module.exports = function (eleventyConfig) {
     }
   }
 
-  // Add i18n plugin
+  // eleventy (as of v2.0.0-canary.14) currently has a built-in
+  // internationalization plugin (https://www.11ty.dev/docs/plugins/i18n/), but
+  // it doesn't localize any strings, values, numbers, etc. so their
+  // documentation recommends using a third-party internationalization plugin in
+  // tandem. the built-in plugin provides filters to retrieve the current page's
+  // locale (though not the language *label* for the current locale --
+  // unhelpfully, we have to implement that ourselves) as well as the alternate
+  // locales available for the current page. the third-party
+  // `eleventy-plugin-i18n` provides string localization, but lacks the built-in
+  // plugin's filters.
+
+  // the third-party i18n plugin:
   eleventyConfig.addPlugin(i18n, {
     translations,
-    fallbackLocales: { '*': 'en' }
+    fallbackLocales: { '*': 'en' },
+  });
+
+  // the built-in i18n plugin:
+  eleventyConfig.addPlugin(EleventyI18nPlugin, {
+    defaultLanguage: 'en',
+    // when to throw errors for missing localized content files:
+    // errorMode: 'strict', // throw an error if content is missing at /en/slug
+    errorMode: 'allow-fallback', // only throw an error when the content is missing at both /en/slug and /slug
+    // errorMode: "never", // don’t throw errors for missing content
+  });
+
+  // getting the label (that is, the long name like "Deutsch", rather than the
+  // shortcode like "de") for a given locale is provided by the built-in i18n
+  // plugin -- but only for alternate pages, not the current locale. so we gotta
+  // implement it ourselves anyway lol
+  eleventyConfig.addNunjucksFilter('langToLabel', (value) => {
+    const label = LOCALES[value];
+    if (!label) {
+      throw new Error(
+        `Unknown locale passed to 'langToLabel' filter: ${value}`
+      );
+    }
+    return label;
   });
 
   // Copy assets to /_site

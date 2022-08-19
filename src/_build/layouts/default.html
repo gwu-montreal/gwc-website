@@ -20,6 +20,20 @@
     ></script>
   </head>
   <body>
+    <div style="position: absolute; top: 2rem; right: 2rem">
+      <select id="lang-select">
+        <option value="{{ page.url }}">{{ page.lang | langToLabel }}</option>
+        {% for link in page.url | locale_links %}
+        <option value="{{link.url}}">{{link.label}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <script>
+      const sel = document.querySelector('#lang-select');
+      sel.addEventListener('change', (ev) => {
+        window.location.href = ev.target.value;
+      });
+    </script>
     <div id="container">
       <div id="header">
         {% if not hideLogo %}
