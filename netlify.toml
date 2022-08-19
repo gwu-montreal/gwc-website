@@ -3,23 +3,23 @@
   command = "npm run build"
 
 # Redirect any URLs with the language code in them already
-[[redirects]]
-  from = "/de/*"
-  to = "/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/fr/*"
-  to = "/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/*"
-  to = "/:splat"
-  status = 301
-  force = true
+# [[redirects]]
+#   from = "/de/*"
+#   to = "/:splat"
+#   status = 301
+#   force = true
+#
+# [[redirects]]
+#   from = "/fr/*"
+#   to = "/:splat"
+#   status = 301
+#   force = true
+#
+# [[redirects]]
+#   from = "/en/*"
+#   to = "/:splat"
+#   status = 301
+#   force = true
 
 # Show the language-specific content file
 [[redirects]]
