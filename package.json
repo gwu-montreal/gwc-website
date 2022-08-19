@@ -6,7 +6,11 @@
     "serve:css": "postcss src/_build/css/init.css -o _site/style.css -w",
     "build": "cross-env NODE_ENV=production run-s clean build:*",
     "build:eleventy": "eleventy",
-    "build:css": "postcss src/_build/css/init.css -o _site/style.css"
+    "build:css": "postcss src/_build/css/init.css -o _site/style.css",
+    "test": "run-p -cl test:*",
+    "test:eslint": "eslint --color *.js 'src/**/*.js'",
+    "test:prettier": "prettier -l *.js 'src/**/*.{js,html}'",
+    "prettier": "prettier --write *.js 'src/**/*.{js,html}'"
   },
   "devDependencies": {
     "@11ty/eleventy": "2.0.0-canary.14",
@@ -17,6 +21,7 @@
     "eleventy-plugin-metagen": "^1.7.11",
     "esbuild": "^0.15.2",
     "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
     "graceful-fs": "^4.2.10",
     "js-yaml": "^4.1.0",
     "markdown-it": "^12.3.2",

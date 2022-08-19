@@ -40,7 +40,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   // Read yaml data files
-  eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
+  eleventyConfig.addDataExtension('yaml', (contents) => yaml.load(contents));
 
   // Create translations object
   const translations = {};

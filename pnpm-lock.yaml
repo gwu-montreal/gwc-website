@@ -9,6 +9,7 @@ specifiers:
   eleventy-plugin-metagen: ^1.7.11
   esbuild: ^0.15.2
   eslint: ^8.21.0
+  eslint-config-prettier: ^8.5.0
   graceful-fs: ^4.2.10
   js-yaml: ^4.1.0
   markdown-it: ^12.3.2
@@ -32,6 +33,7 @@ devDependencies:
   eleventy-plugin-metagen: 1.7.11
   esbuild: 0.15.2
   eslint: 8.21.0
+  eslint-config-prettier: 8.5.0_eslint@8.21.0
   graceful-fs: 4.2.10
   js-yaml: 4.1.0
   markdown-it: 12.3.2
@@ -1487,6 +1489,15 @@ packages:
   /escape-string-regexp/4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
+    dev: true
+
+  /eslint-config-prettier/8.5.0_eslint@8.21.0:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.21.0
     dev: true
 
   /eslint-scope/7.1.1:
