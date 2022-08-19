@@ -2,26 +2,6 @@
   publish = "_site"
   command = "npm run build"
 
-# Redirect any URLs with the language code in them already
-# [[redirects]]
-#   from = "/de/*"
-#   to = "/:splat"
-#   status = 301
-#   force = true
-#
-# [[redirects]]
-#   from = "/fr/*"
-#   to = "/:splat"
-#   status = 301
-#   force = true
-#
-# [[redirects]]
-#   from = "/en/*"
-#   to = "/:splat"
-#   status = 301
-#   force = true
-
-# Show the language-specific content file
 [[redirects]]
   from = "/*"
   to = "/de/:splat"
@@ -37,4 +17,9 @@
 [[redirects]]
   from = "/*"
   to = "/en/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/"
+  to = "/en"
   status = 200
