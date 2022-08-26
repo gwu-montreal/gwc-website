@@ -20,14 +20,6 @@
     ></script>
   </head>
   <body>
-    <div style="position: absolute; top: 2rem; right: 2rem">
-      <select id="lang-select">
-        <option value="{{ page.url }}">{{ page.lang | langToLabel }}</option>
-        {% for link in page.url | locale_links %}
-        <option value="{{link.url}}">{{link.label}}</option>
-        {% endfor %}
-      </select>
-    </div>
     <script>
       const sel = document.querySelector('#lang-select');
       sel.addEventListener('change', (ev) => {
@@ -43,7 +35,16 @@
 
       <main id="content">{{ content | safe }}</main>
 
-      <div id="footer"></div>
+      <div id="footer">
+        <div id="lang-switcher">
+          <select id="lang-select">
+            <option value="{{ page.url }}">{{ page.lang | i18n }}</option>
+            {% for link in page.url | locale_links %}
+            <option value="{{link.url}}">{{link.label}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
     </div>
 
     <script>

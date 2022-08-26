@@ -7,14 +7,6 @@ const mditContainer = require('markdown-it-container');
 const mditAttrs = require('markdown-it-attrs');
 const i18n = require('eleventy-plugin-i18n');
 
-// TODO: can this be derived from the data implicitly, rather than needing to
-// specify it in the config in duplicate like this?
-const LOCALES = {
-  en: 'English',
-  de: 'Deutsch',
-  fr: 'Français',
-};
-
 module.exports = function (eleventyConfig) {
   // Add plugin to render MD fragments inside html files
   eleventyConfig.addPlugin(EleventyRenderPlugin);
@@ -51,8 +43,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addDataExtension('yaml', (contents) => yaml.load(contents));
 
   // Create translations object
+  const langs = ['en', 'de', 'fr'];
   const translations = {};
-  for (const lang of Object.keys(LOCALES)) {
+  for (const lang of langs) {
     const i18nFile = yaml.load(
       fs.readFileSync(`src/_i18n/localization.${lang}.yaml`, 'utf8')
     );
@@ -72,8 +65,8 @@ module.exports = function (eleventyConfig) {
   // locale (though not the language *label* for the current locale --
   // unhelpfully, we have to implement that ourselves) as well as the alternate
   // locales available for the current page. the third-party
-  // `eleventy-plugin-i18n` provides string localization, but lacks the built-in
-  // plugin's filters.
+  // `eleventy-plugin-i18n` provides string localization (which we can use for the language
+  // labels), but lacks the built-in plugin's filters.
 
   // the third-party i18n plugin:
   eleventyConfig.addPlugin(i18n, {
@@ -88,20 +81,6 @@ module.exports = function (eleventyConfig) {
     // errorMode: 'strict', // throw an error if content is missing at /en/slug
     errorMode: 'allow-fallback', // only throw an error when the content is missing at both /en/slug and /slug
     // errorMode: "never", // don’t throw errors for missing content
-  });
-
-  // getting the label (that is, the long name like "Deutsch", rather than the
-  // shortcode like "de") for a given locale is provided by the built-in i18n
-  // plugin -- but only for alternate pages, not the current locale. so we gotta
-  // implement it ourselves anyway lol
-  eleventyConfig.addNunjucksFilter('langToLabel', (value) => {
-    const label = LOCALES[value];
-    if (!label) {
-      throw new Error(
-        `Unknown locale passed to 'langToLabel' filter: ${value}`
-      );
-    }
-    return label;
   });
 
   // Copy assets to /_site

@@ -1,7 +1,15 @@
 ---
 title: 'Localization'
 data:
-  - { key: 'sitedesc', t: "La Game Workers Coalition est un collectif international d'organisation du travail dans l'industrie du jeu vidéo." }
+  - {
+      key: 'sitedesc',
+      t: "La Game Workers Coalition est un collectif international d'organisation du travail dans l'industrie du jeu vidéo.",
+    }
+
+  - { key: 'en', t: 'English' }
+  - { key: 'de', t: 'Deutsch' }
+  - { key: 'fr', t: 'French' }
+
   - { key: 'africa', t: 'Afrique' }
   - { key: 'asia', t: 'Asie' }
   - { key: 'northam', t: 'Amérique du Nord' }

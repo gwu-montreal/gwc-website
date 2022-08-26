@@ -2,7 +2,7 @@
   /* Dimensions */
   --default-gap: 3rem;
   --container-width: 700px;
-  --footer-gap: 1.5rem;
+  --footer-gap: 1.5rem 2rem;
   /* BG colors */
   --site-bg: #eee;
   --header-bg: #101010;
@@ -16,7 +16,8 @@ html {
 
 /* #container is the rectangle that contains everything but the background */
 
-#container, #content {
+#container,
+#content {
   display: flex;
   flex-flow: column nowrap;
 }
@@ -43,9 +44,9 @@ html {
 }
 
 #header img {
-	display:block;
-	margin: 0 auto;
-	width:50%;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
 }
 
 #content {
@@ -55,5 +56,15 @@ html {
 
 #footer {
   background-color: var(--footer-bg);
-  padding: var(--footer-gap)
+  padding: var(--footer-gap);
+}
+
+#lang-switcher select {
+  background-color: var(--footer-bg);
+  border: 1px solid;
+
+  &:hover,
+  &:focus {
+    border-color: var(--footer-link-hover);
+  }
 }

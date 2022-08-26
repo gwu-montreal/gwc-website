@@ -33,7 +33,8 @@ a {
     color: var(--container-text);
     background-color: var(--container-link-bg);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--container-bg);
       background-color: var(--container-link-hover);
     }
@@ -41,19 +42,31 @@ a {
 }
 
 #footer {
-  text-align: center;
-  font-size: 0.9rem;
-  font-style: italic;
+  text-align: right;
   color: var(--footer-text);
 
   & a {
     color: var(--footer-text);
     background-color: var(--footer-bg);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--footer-bg);
       background-color: var(--footer-link-hover);
     }
+  }
+}
+
+#lang-switcher {
+  select {
+    font-size: 0.9rem;
+    font-weight: 440;
+    color: var(--footer-text);
+  }
+
+  option {
+    font-size: 1rem;
+    font-weight: 460;
   }
 }
 
