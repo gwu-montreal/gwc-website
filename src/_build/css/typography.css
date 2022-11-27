@@ -9,7 +9,7 @@
 
 body {
   font-size: 18px;
-  font-family: Synonym, courier, monospace;
+  font-family: Synonym, 'Noto Sans', courier, monospace;
   font-weight: 415;
   line-height: 1.6;
 }
